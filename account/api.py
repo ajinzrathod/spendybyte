@@ -30,8 +30,8 @@ class RegisterUserApi(generics.GenericAPIView):
 
 
 class UserApi(viewsets.ModelViewSet):
-    # authentication_classes = (JWTAuthentication,)
-    # permission_classes = (IsStaff,)
+    authentication_classes = (JWTAuthentication,)
+    permission_classes = (IsStaff,)
 
     queryset = User.objects.all()
     serializer_class = UserSerializer
