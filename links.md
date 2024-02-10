@@ -1,8 +1,7 @@
-## WIP
-
-https://python.plainenglish.io/django-rest-framework-jwt-auth-with-login-and-register-77f830cd8789
-
 ## References
+
+Signup with JWT
+https://python.plainenglish.io/django-rest-framework-jwt-auth-with-login-and-register-77f830cd8789
 
 Token Authentication in Django
 https://old-monk.medium.com/token-authentication-in-django-216de56d9d57

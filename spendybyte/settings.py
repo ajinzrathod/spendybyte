@@ -40,7 +40,7 @@ MIDDLEWARE = [
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
 ]
 
-ROOT_URLCONF = "splitexpense.urls"
+ROOT_URLCONF = "spendybyte.urls"
 
 TEMPLATES = [
     {
@@ -58,7 +58,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = "splitexpense.wsgi.application"
+WSGI_APPLICATION = "spendybyte.wsgi.application"
 
 DATABASES = {
     "default": {
