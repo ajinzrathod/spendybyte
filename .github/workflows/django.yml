@@ -5,7 +5,11 @@ on:
     branches: [ "master" ]
   pull_request:
     branches: [ "master" ]
-
+env:
+  SECRET_KEY: ${{ env.SECRET_KEY }}
+  DATABASE_NAME: ${{ env.DATABASE_NAME }}
+  DATABASE_USER: ${{ env.DATABASE_USER }}
+  DATABASE_PASSWORD: ${{ env.DATABASE_PASSWORD }}
 jobs:
   build:
 
