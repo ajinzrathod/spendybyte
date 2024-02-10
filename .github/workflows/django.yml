@@ -1,4 +1,4 @@
-name: Django CI SpendyByte
+name: Django CI-SpendyByte
 
 on:
   push:
