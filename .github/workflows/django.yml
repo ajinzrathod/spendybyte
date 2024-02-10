@@ -26,10 +26,7 @@ jobs:
         python -m pip install --upgrade pip
         pip install -r requirements.txt
     - name: Run Tests
-      env:
-        SECRET_KEY: ${{ secrets.SECRET_KEY }}
-        DATABASE_NAME: ${{ env.DATABASE_NAME }}
-        DATABASE_USER: ${{ env.DATABASE_USER }}
-        DATABASE_PASSWORD: ${{ env.DATABASE_PASSWORD }}
       run: |
         python manage.py test
+      env:
+        SECRET_KEY: ${{ secrets.SECRET_KEY }}
