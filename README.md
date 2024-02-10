@@ -1,4 +1,7 @@
 # SpendyByte
+
+[![Django CI](https://github.com/ajinzrathod/spendybyte/actions/workflows/django.yml/badge.svg)](https://github.com/ajinzrathod/spendybyte/actions/workflows/django.yml)
+
 0. Clone the repo and go inside the directory: 
 ```bash
 git clone git@github.com:ajinzrathod/spendybyte.git`
