@@ -28,7 +28,7 @@ jobs:
         run: |
           python manage.py test
         env:
-          SECRET_KEY: ${{ secrets.SECRET_KEY }}
-          DATABASE_NAME: ${{ secrets.DATABASE_NAME }}
-          DATABASE_USER: ${{ secrets.DATABASE_USER }}
-          DATABASE_PASSWORD: ${{ secrets.DATABASE_PASSWORD }}
+          SECRET_KEY: test
+          DATABASE_NAME: test
+          DATABASE_USER: test
+          DATABASE_PASSWORD: test
