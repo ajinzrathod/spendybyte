@@ -1,0 +1,12 @@
+PENDING = "PENDING"
+REJECTED = "REJECTED"
+APPROVED = "APPROVED"
+REIMBURSED = "REIMBURSED"
+
+
+APPROVAL_STATUS = (
+    (PENDING, "Pending"),
+    (REJECTED, "Rejected"),
+    (APPROVED, "Approved"),
+    (REIMBURSED, "Reimbursed"),
+)

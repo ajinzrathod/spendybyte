@@ -1,13 +1,16 @@
 from pathlib import Path
+import os
+import environ
+
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
+env = environ.Env()
+environ.Env.read_env()
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = (
-    "django-insecure-qf=fe61e3z4md1%vzs7re3kwf7q@9b0c+)3t8q8t-#1xxr&%az"
-)
+SECRET_KEY = env("SECRET_KEY")
 
 DEBUG = True
 ALLOWED_HOSTS = []
@@ -22,6 +25,7 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     "rest_framework",
     "account",
+    "expense",
 ]
 
 REST_FRAMEWORK = {
@@ -38,6 +42,7 @@ MIDDLEWARE = [
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
+    "spendybyte.timezone_middleware.TimezoneMiddleware",
 ]
 
 ROOT_URLCONF = "spendybyte.urls"
@@ -60,12 +65,17 @@ TEMPLATES = [
 
 WSGI_APPLICATION = "spendybyte.wsgi.application"
 
+
 DATABASES = {
     "default": {
-        "ENGINE": "django.db.backends.sqlite3",
-        "NAME": BASE_DIR / "db.sqlite3",
+        "ENGINE": "django.db.backends.postgresql",
+        "NAME": env("DATABASE_NAME"),
+        "USER": env("DATABASE_USER"),
+        "PASSWORD": env("DATABASE_PASSWORD"),
+        "HOST": "localhost",
     }
 }
+
 
 AUTH_PASSWORD_VALIDATORS = [
     {
@@ -94,3 +104,10 @@ USE_TZ = True
 STATIC_URL = "static/"
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
+
+
+MEDIA_ROOT = os.path.join(BASE_DIR, "media")
+MEDIA_URL = "/media/"
+
+PROJECT_NAME = "SpendyByte"
+AUTH_USER_MODEL = "account.Account"

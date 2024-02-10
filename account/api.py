@@ -1,12 +1,12 @@
 from rest_framework import generics, viewsets
 from rest_framework.response import Response
+from account.models import Account
 from account.permissions import IsStaff
 from .serializer import (
     RegisterSerializer,
     UserSerializer,
     UserSerializerRegisterResponse,
 )
-from django.contrib.auth.models import User
 from rest_framework import status
 from rest_framework_simplejwt.authentication import JWTAuthentication
 
@@ -33,7 +33,7 @@ class UserApi(viewsets.ModelViewSet):
     authentication_classes = (JWTAuthentication,)
     permission_classes = (IsStaff,)
 
-    queryset = User.objects.all()
+    queryset = Account.objects.all()
     serializer_class = UserSerializer
 
     def create(self, request, *args, **kwargs):
