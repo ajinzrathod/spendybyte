@@ -44,6 +44,9 @@ jobs:
         run: python manage.py makemigrations
       - name: Migrate
         run: python manage.py migrate
+      - name: Debug secrets
+        run: |
+          echo "DATABASE_NAME: ${{ secrets.DATABASE_NAME }}"
       - name: Run Tests
         run: |
           pytest
