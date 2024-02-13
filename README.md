@@ -41,6 +41,23 @@ pip install -r requirements.txt
 ```
 
 9. Run the application
-```
+```bash
 python manage.py runserver
 ```
+
+
+## Read data from PostgreSQL without any database administartor tool
+```bash
+docker exec -it <your-container-id> psql -U <username> <dbname>
+```
+
+### Show tables:
+```
+\dt
+```
+
+### Show data from table:
+```sql
+select * from <your-table-name>;
+```
+

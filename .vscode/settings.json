@@ -1,0 +1,10 @@
+{
+    "python.testing.pytestArgs": [
+        ".",
+        // The -s flag in pytest is used to enable printing output 
+        // from print() statements during the test run from VS Code
+        "-s"
+    ],
+    "python.testing.unittestEnabled": false,
+    "python.testing.pytestEnabled": true
+}
