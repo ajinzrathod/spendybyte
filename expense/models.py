@@ -3,6 +3,7 @@ import os
 from django.db import models
 from django.utils.translation import gettext_lazy as _
 from django.core.validators import FileExtensionValidator
+
 from account.models import Account
 
 from expense.approval_status import APPROVAL_STATUS, PENDING
@@ -24,6 +25,8 @@ class Expense(models.Model):
         Account,
         on_delete=models.RESTRICT,
         related_name="requested_by",
+        blank=True,
+        null=True,
     )
     expense_amount = models.DecimalField(max_digits=10, decimal_places=2)
     expense_title = models.CharField(max_length=60)
@@ -39,8 +42,7 @@ class Expense(models.Model):
         ],
     )
     approval_amount = models.DecimalField(
-        max_digits=10,
-        decimal_places=2,
+        max_digits=10, decimal_places=2, blank=True, null=True
     )
 
     approval_status = models.CharField(

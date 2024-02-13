@@ -4,7 +4,7 @@ from django.contrib.sessions.models import Session
 
 from django.utils.translation import gettext_lazy as _
 
-from account.models import Account
+from django.contrib.auth import get_user_model
 
 
 @admin.display(description="Id")
@@ -103,5 +103,7 @@ class SessionAdmin(admin.ModelAdmin):
     list_display = ["session_key", "_session_data", "expire_date"]
 
 
+User = get_user_model()
+
 admin.site.register(Session, SessionAdmin)
-admin.site.register(Account, AccountAdminConfig)
+admin.site.register(User, AccountAdminConfig)
