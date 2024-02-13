@@ -32,3 +32,4 @@ jobs:
           DATABASE_NAME: ${{ secrets.DATABASE_NAME }}
           DATABASE_USER: ${{ secrets.DATABASE_USER }}
           DATABASE_PASSWORD: ${{ secrets.DATABASE_PASSWORD }}
+          TEST_DATABASE_NAME: ${{ secrets.TEST_DATABASE_NAME }}
