@@ -73,7 +73,11 @@ DATABASES = {
         "USER": env("DATABASE_USER"),
         "PASSWORD": env("DATABASE_PASSWORD"),
         "HOST": "localhost",
-    }
+        "PORT": 5432,
+        "TEST": {
+            "NAME": env("TEST_DATABASE_NAME"),
+        },
+    },
 }
 
 

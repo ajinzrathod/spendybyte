@@ -39,8 +39,7 @@ class Expense(models.Model):
         ],
     )
     approval_amount = models.DecimalField(
-        max_digits=10,
-        decimal_places=2,
+        max_digits=10, decimal_places=2, blank=True, null=True
     )
 
     approval_status = models.CharField(
