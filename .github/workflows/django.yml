@@ -17,10 +17,6 @@ jobs:
     services:
       postgres:
         image: postgres:latest
-        env:
-          POSTGRES_DB: ${{ secrets.DATABASE_NAME }}
-          POSTGRES_PASSWORD: ${{ secrets.DATABASE_PASSWORD }}
-          POSTGRES_USER: ${{ secrets.DATABASE_USER }}
         ports:
           - 5432:5432
         # Set health checks to wait until postgres has started
@@ -53,9 +49,3 @@ jobs:
       - name: Run Tests
         run: |
           pytest
-        env:
-          SECRET_KEY: ${{ secrets.SECRET_KEY }}
-          DATABASE_NAME: ${{ secrets.DATABASE_NAME }}
-          DATABASE_USER: ${{ secrets.DATABASE_USER }}
-          DATABASE_PASSWORD: ${{ secrets.DATABASE_PASSWORD }}
-          TEST_DATABASE_NAME: ${{ secrets.TEST_DATABASE_NAME }}
