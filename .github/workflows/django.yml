@@ -42,11 +42,11 @@ jobs:
           pip install -r requirements.txt
       - name: Make Migrations
         run: python manage.py makemigrations
-      - name: Migrate
-        run: python manage.py migrate
       - name: Debug secrets
         run: |
           echo "DATABASE_NAME: ${{ secrets.DATABASE_NAME }}"
+      - name: Migrate
+        run: python manage.py migrate
       - name: Run Tests
         run: |
           pytest
