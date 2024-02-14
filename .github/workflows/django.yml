@@ -46,10 +46,39 @@ jobs:
         run: |
           python -m pip install --upgrade pip
           pip install -r requirements.txt
+      - name: Check and Create Database
+        run: |
+          python <<EOF
+          import psycopg2
+
+          conn = psycopg2.connect(
+            host='localhost',
+            port='5432',
+            user='${{ secrets.DATABASE_USER }}',
+            password='${{ secrets.DATABASE_PASSWORD }}'
+          )
+          cursor = conn.cursor()
+
+          # Check if database exists
+          cursor.execute("""
+            SELECT EXISTS(SELECT 1 FROM pg_catalog.pg_database WHERE datname = 'spendybyte');
+          """)
+          exists = cursor.fetchone()[0]
+
+          if not exists:
+            cursor.execute("CREATE DATABASE spendybyte")
+            conn.commit()
+            print("Database 'spendybyte' created successfully")
+          else:
+            print("Database 'spendybyte' already exists")
+
+          cursor.close()
+          conn.close()
+          EOF
       - name: Make Migrations
-        run: python manage.py makemigrations --database=${{ secrets.DATABASE_NAME }}
+        run: python manage.py makemigrations
       - name: Migrate
-        run: python manage.py migrate --database=${{ secrets.DATABASE_NAME }}
+        run: python manage.py migrate
       - name: Run Tests
         run: |
           pytest
