@@ -52,7 +52,7 @@ class ExpenseAdmin(admin.ModelAdmin):
 
     # we cant use use raw_id_fields on approved_by else
     # the custom queryset would have no point, and any user can be selected
-    raw_id_fields = ("requested_by",)
+    # raw_id_fields = ("requested_by",)
 
     # approved by will only show those users
     # who have access to change expense app
