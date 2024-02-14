@@ -47,9 +47,9 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r requirements.txt
       - name: Make Migrations
-        run: python manage.py makemigrations
+        run: python manage.py makemigrations --database=${{ secrets.DATABASE_NAME }}
       - name: Migrate
-        run: python manage.py migrate
+        run: python manage.py migrate --database=${{ secrets.DATABASE_NAME }}
       - name: Run Tests
         run: |
           pytest
