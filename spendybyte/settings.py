@@ -75,7 +75,7 @@ DATABASES = {
         "HOST": "localhost",
         "PORT": 5432,
         "TEST": {
-            "NAME": env("TEST_DATABASE_NAME"),
+            "NAME": env("DATABASE_NAME"),
         },
     },
 }
