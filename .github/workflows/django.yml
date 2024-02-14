@@ -61,16 +61,16 @@ jobs:
 
           # Check if database exists
           cursor.execute("""
-            SELECT EXISTS(SELECT 1 FROM pg_catalog.pg_database WHERE datname = 'spendybyte');
+            SELECT EXISTS(SELECT 1 FROM pg_catalog.pg_database WHERE datname = '${{ secrets.DATABASE_USER }}');
           """)
           exists = cursor.fetchone()[0]
 
           if not exists:
             cursor.execute("CREATE DATABASE spendybyte")
             conn.commit()
-            print("Database 'spendybyte' created successfully")
+            print("Database created successfully")
           else:
-            print("Database 'spendybyte' already exists")
+            print("Database already exists")
 
           cursor.close()
           conn.close()
@@ -79,6 +79,36 @@ jobs:
         run: python manage.py makemigrations
       - name: Migrate
         run: python manage.py migrate
+      - name: List tables
+        run: |
+          python <<EOF
+          import psycopg2
+
+          # Establish connection to the PostgreSQL database
+          conn = psycopg2.connect(
+              host='localhost',
+              port='5432',
+              user='${{ secrets.DATABASE_USER }}',
+              password='${{ secrets.DATABASE_PASSWORD }}',
+              database='${{ secrets.DATABASE_NAME }}'
+          )
+          cursor = conn.cursor()
+
+          # Execute SQL query to retrieve table names
+          cursor.execute("SELECT table_name FROM information_schema.tables WHERE table_schema = 'public'")
+
+          # Fetch all rows from the result set
+          tables = cursor.fetchall()
+
+          # Print the list of tables
+          print("List of tables:")
+          for table in tables:
+              print(table[0])
+
+          # Close cursor and connection
+          cursor.close()
+          conn.close()
+          EOF
       - name: Run Tests
         run: |
           pytest
