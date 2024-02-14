@@ -1,4 +1,4 @@
-## References
+# References
 
 Signup with JWT
 https://python.plainenglish.io/django-rest-framework-jwt-auth-with-login-and-register-77f830cd8789
