@@ -20,11 +20,11 @@ def get_upload_path(instance, filename):
 
 
 class Expense(models.Model):
-    requested_by = models.ForeignKey(
-        Account,
-        on_delete=models.RESTRICT,
-        related_name="requested_by",
-    )
+    # requested_by = models.ForeignKey(
+    #     Account,
+    #     on_delete=models.RESTRICT,
+    #     related_name="requested_by",
+    # )
     expense_amount = models.DecimalField(max_digits=10, decimal_places=2)
     expense_title = models.CharField(max_length=60)
     expense_description = models.CharField(max_length=300, blank=True)
@@ -48,13 +48,13 @@ class Expense(models.Model):
         default=PENDING,
     )
 
-    approved_by = models.ForeignKey(
-        Account,
-        on_delete=models.RESTRICT,
-        blank=True,
-        null=True,
-        related_name="approved_by",
-    )
+    # approved_by = models.ForeignKey(
+    #     Account,
+    #     on_delete=models.RESTRICT,
+    #     blank=True,
+    #     null=True,
+    #     related_name="approved_by",
+    # )
 
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)

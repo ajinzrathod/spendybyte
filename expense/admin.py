@@ -17,7 +17,7 @@ class ExpenseAdmin(admin.ModelAdmin):
         "requested_by__first_name",
         "requested_by__last_name",
     )
-    autocomplete_fields = ("requested_by",)
+    # autocomplete_fields = ("requested_by",)
 
     ordering = ("-created_at",)
     readonly_fields = (
@@ -26,24 +26,24 @@ class ExpenseAdmin(admin.ModelAdmin):
     )
     list_display = (
         id,
-        "requested_by",
+        # "requested_by",
         "expense_amount",
         "expense_title",
         "approval_amount",
         "approval_status",
-        "approved_by",
+        # "approved_by",
         "created_at",
         "updated_at",
     )
     fields = (
-        "requested_by",
+        # "requested_by",
         "expense_amount",
         "expense_title",
         "expense_description",
         "receipt",
         "approval_amount",
         "approval_status",
-        "approved_by",
+        # "approved_by",
         "created_at",
         "updated_at",
     )
