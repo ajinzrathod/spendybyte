@@ -111,4 +111,4 @@ jobs:
           EOF
       - name: Run Tests
         run: |
-          pytest
+          pytest -s
