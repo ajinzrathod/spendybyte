@@ -24,7 +24,7 @@ jobs:
       postgres:
         image: postgres:latest
         env:
-          POSTGRES_DB: ${{ secrets.TEST_DATABASE_NAME }}
+          POSTGRES_DB: ${{ secrets.DATABASE_NAME }}
           POSTGRES_PASSWORD: ${{ secrets.DATABASE_PASSWORD }}
           POSTGRES_USER: ${{ secrets.DATABASE_USER }}
         ports:
@@ -46,35 +46,6 @@ jobs:
         run: |
           python -m pip install --upgrade pip
           pip install -r requirements.txt
-      - name: Check and Create Database
-        run: |
-          python <<EOF
-          import psycopg2
-
-          conn = psycopg2.connect(
-            host='localhost',
-            port='5432',
-            user='${{ secrets.DATABASE_USER }}',
-            password='${{ secrets.DATABASE_PASSWORD }}'
-          )
-          cursor = conn.cursor()
-
-          # Check if database exists
-          cursor.execute("""
-            SELECT EXISTS(SELECT 1 FROM pg_catalog.pg_database WHERE datname = '${{ secrets.DATABASE_USER }}');
-          """)
-          exists = cursor.fetchone()[0]
-
-          if not exists:
-            cursor.execute("CREATE DATABASE test_spendybyte")
-            conn.commit()
-            print("Database created successfully")
-          else:
-            print("Database already exists")
-
-          cursor.close()
-          conn.close()
-          EOF
       - name: Make Migrations
         run: python manage.py makemigrations
       - name: Migrate
