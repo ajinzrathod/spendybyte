@@ -1,5 +1,7 @@
-from django.contrib.auth.models import User
+from django.contrib.auth import get_user_model
 from django.db.models import Q
+
+User = get_user_model()
 
 
 GRANT_SUPERUSER = True
