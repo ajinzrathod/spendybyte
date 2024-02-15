@@ -3,7 +3,8 @@ import os
 from django.db import models
 from django.utils.translation import gettext_lazy as _
 from django.core.validators import FileExtensionValidator
-from account.models import Account
+
+# from account.models import Account
 
 from expense.approval_status import APPROVAL_STATUS, PENDING
 from expense.validators import validate_max_file_size
