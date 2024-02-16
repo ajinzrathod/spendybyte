@@ -69,7 +69,7 @@ WSGI_APPLICATION = "spendybyte.wsgi.application"
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.postgresql",
-        "NAME": env("TEST_DATABASE_NAME"),
+        "NAME": env("DATABASE_NAME"),
         "USER": env("DATABASE_USER"),
         "PASSWORD": env("DATABASE_PASSWORD"),
         "HOST": "localhost",
