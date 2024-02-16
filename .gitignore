@@ -162,4 +162,3 @@ cython_debug/
 # Django
 media/
 .env
-/*/migrations/
