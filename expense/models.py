@@ -25,6 +25,8 @@ class Expense(models.Model):
         Account,
         on_delete=models.RESTRICT,
         related_name="requested_by",
+        blank=True,
+        null=True,
     )
     expense_amount = models.DecimalField(max_digits=10, decimal_places=2)
     expense_title = models.CharField(max_length=60)
